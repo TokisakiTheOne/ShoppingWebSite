@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyh.dao.ProductDao">
+    <insert id="insert">
+        insert into product(product_name, product_sum, product_price, status_id)
+        values (#{productName}, #{productSum}, #{productPrice}, #{status.statusId})
+    </insert>
+    <update id="update">
+        update product set product_sum=#{productSum},product_price=#{productPrice},status_id=#{status.statusId}
+        where product_id=#{productId}
+    </update>
+    <delete id="delete">
+        delete from product where product_id=#{productId}
+    </delete>
+
+
+    <select id="selectAll" resultMap="productMap">
+        select * from product
+      <!--  select * from product,status where status.status_id=product.status_id-->
+    </select>
+    <select id="selectOne" resultMap="productMap">
+        select * from product where product_id=#{productId}
+    </select>
+
+    <resultMap id="productMap" type="com.yyh.po.Product">
+        <id property="productId" column="product_id"/>
+        <result property="productName" column="product_name"/>
+        <result property="productSum" column="product_sum"/>
+        <result property="productPrice" column="product_price"/>
+        <association property="status" select="com.yyh.dao.StatusDao.selectOne" column="status_id"/>
+       <!-- <association property="status" javaType="com.yyh.po.Status">
+            <id column="status_id" property="statusId"/>
+            <result column="status_name" property="statusName"/>
+        </association>-->
+    </resultMap>
+</mapper>

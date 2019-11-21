@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyh.dao.StatusDao">
+    <insert id="insert"></insert>
+    <update id="update"></update>
+    <delete id="delete"></delete>
+    <select id="selectAll" resultMap="statusMap">
+        select * from status
+    </select>
+    <select id="selectOne" resultMap="statusMap">
+        select * from status where status_id=#{statusId}
+    </select>
+    <resultMap id="statusMap" type="com.yyh.po.Status">
+        <id column="status_id" property="statusId"/>
+        <result column="status_name" property="statusName"/>
+    </resultMap>
+</mapper>
