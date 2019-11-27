@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        #btninsert {
+            float: right;
+        }
+    </style>
 </head>
 <body>
+<a href="/product/toInsert">
+    <button id="btninsert" type="button" class="btn btn-secondary btn-lg">添加信息</button>
+</a>
 <table class="table table-striped table-bordered table-hover">
     <thead class="thead-dark">
     <tr align="center">
@@ -27,8 +36,9 @@
         <td th:text="${p.productPrice}">@mdo</td>
         <td th:text="${p.status.statusName}">@mdo</td>
         <td>
-            <a th:href="@{/product/selectOne(product_id=${p.productId})}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">修改</a>
-            <a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">删除</a>
+            <a th:href="@{/product/selectOne(product_id=${p.productId})}" class="btn btn-info btn-sm active"
+               role="button" aria-pressed="true">修改</a>
+            <a th:href="@{/product/delete(product_id=${p.productId})}" onclick="return confirm('确定要删除吗')" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">删除</a>
         </td>
     </tr>
     </tbody>

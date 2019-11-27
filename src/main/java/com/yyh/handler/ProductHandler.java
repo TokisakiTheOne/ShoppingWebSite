@@ -6,6 +6,7 @@ import com.yyh.service.ProductService;
 import com.yyh.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -36,9 +37,27 @@ public class ProductHandler {
 
 
     @RequestMapping("/update")
-    public String update(Product product){
+    public String update(Product product) {
         ps.update(product);
         return "redirect:/product/selectAll";
+    }
+
+    @RequestMapping("/insert")
+    public String insert(Product product) {
+        ps.insert(product);
+        return "redirect:/product/selectAll";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(int product_id) {
+        ps.delete(product_id);
+        return "redirect:/product/selectAll";
+    }
+
+    @RequestMapping("/toInsert")
+    public String toInsert(Model model) {
+        model.addAttribute("statusList", ss.selectAll());
+        return "insert";
     }
 
 }

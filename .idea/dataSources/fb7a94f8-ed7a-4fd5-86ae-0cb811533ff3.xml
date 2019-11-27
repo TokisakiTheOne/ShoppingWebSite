@@ -1296,67 +1296,145 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="357" parent="10" name="product"/>
-    <table id="358" parent="10" name="status"/>
-    <column id="359" parent="357" name="product_id">
+    <table id="357" parent="10" name="consumer"/>
+    <table id="358" parent="10" name="consumer_permission"/>
+    <table id="359" parent="10" name="permission"/>
+    <table id="360" parent="10" name="product"/>
+    <table id="361" parent="10" name="status"/>
+    <column id="362" parent="357" name="consumer_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="360" parent="357" name="product_name">
+    <column id="363" parent="357" name="consumer_username">
       <Position>2</Position>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="361" parent="357" name="product_sum">
+    <column id="364" parent="357" name="consumer_password">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="365" parent="357" name="consumer_consumer_username_uindex">
+      <ColNames>consumer_username</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="366" parent="357" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>consumer_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="367" parent="357" name="consumer_consumer_username_uindex">
+      <ColNames>consumer_username</ColNames>
+      <UnderlyingIndexName>consumer_consumer_username_uindex</UnderlyingIndexName>
+    </key>
+    <column id="368" parent="358" name="consumer_permission_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="369" parent="358" name="consumer_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="370" parent="358" name="permission_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="362" parent="357" name="product_price">
-      <Position>4</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="363" parent="357" name="status_id">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="364" parent="357" name="product_status_status_id_fk">
-      <ColNames>status_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="365" parent="357" name="PRIMARY">
+    <key id="371" parent="358" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>product_id</ColNames>
+      <ColNames>consumer_permission_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="366" parent="357" name="product_status_status_id_fk">
-      <ColNames>status_id</ColNames>
-      <RefSchemaName>3166shoppingsite</RefSchemaName>
-      <RefTableName>status</RefTableName>
-      <RefColNames>status_id</RefColNames>
-    </foreign-key>
-    <column id="367" parent="358" name="status_id">
+    <column id="372" parent="359" name="permission_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="368" parent="358" name="status_name">
+    <column id="373" parent="359" name="permission_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="374" parent="359" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>permission_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="375" parent="360" name="product_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="376" parent="360" name="product_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="377" parent="360" name="product_sum">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="378" parent="360" name="product_price">
+      <Position>4</Position>
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="379" parent="360" name="status_id">
+      <Position>5</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="380" parent="360" name="product_status_status_id_fk">
+      <ColNames>status_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="381" parent="360" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>product_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="382" parent="360" name="product_status_status_id_fk">
+      <ColNames>status_id</ColNames>
+      <RefSchemaName>3166shoppingsite</RefSchemaName>
+      <RefTableName>status</RefTableName>
+      <RefColNames>status_id</RefColNames>
+    </foreign-key>
+    <column id="383" parent="361" name="status_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="384" parent="361" name="status_name">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="369" parent="358" name="PRIMARY">
+    <key id="385" parent="361" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>status_id</ColNames>
       <Primary>1</Primary>
